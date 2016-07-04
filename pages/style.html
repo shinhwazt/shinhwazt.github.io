@@ -1,6 +1,6 @@
 <div class="container">
 	<div class="row">
-		<div class="col-lg-12">
+		<div class="col-lg-12 zt_hidden">
 			<h3>BootStrap样式表</h3>
 			<p>BootStrap提供的CSS样式有<span class="it">列表组</span>、进度条、<span class="it">图标</span>、<span class="it">缩略图</span>、标签、导航、<span class="it">导航条</span>、分页导航、面包屑导航、按钮、<span class="it">按钮组</span>、<span class="it">输入框组</span>、<span class="it">面板</span>、<span class="it">表格</span>等</p>
 			<h4>1.列表组</h4>
@@ -18,13 +18,15 @@
 				<div class="list-group-item">列表项三</div>
 			</div>
 			可以在列表项中添加BootStrap提供的徽章<code>&ltspan class="badge">11&lt/span&gt</code>，使用方式为：<br />
-			<code class="code">
-			&ltdiv class="list-group"&gt<br />
-				&nbsp&nbsp&ltdiv class="list-group-item">
-				&ltspan class="badge">11&lt/span&gt列表项一&lt/div&gt<br />
-				
-			&lt/div&gt
-			</code>
+			<div class="code-warp">
+				<code class="code">
+				&ltdiv class="list-group"&gt<br />
+					&nbsp&nbsp&ltdiv class="list-group-item">
+					&ltspan class="badge">11&lt/span&gt列表项一&lt/div&gt<br />
+					
+				&lt/div&gt
+				</code>
+			</div>
 			<div class="list-group">
 			  <div class="list-group-item"> <span class="badge">11</span>列表项一</div>
 			</div> 
@@ -78,6 +80,10 @@
 <style>
 .it{color:red;font-weight:bold}
 .tf{text-indent:2em}
-.code{display:inline-block;width:1140px;overflow-x:scroll}
-
+.code-warp{width:auto;overflow:hidden;}
+@media (min-width:800px){
+	.code{width:auto;overflow:hidden;}
+}
+.code{display:inline-block;width:100%;overflow-x:scroll}
+.zt_hidden{overflow:hidden}
 </style>
