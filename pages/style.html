@@ -2,7 +2,7 @@
 	<div class="row">
 		<div class="col-lg-12 zt_hidden">
 			<h3>BootStrap样式表</h3>
-			<p>BootStrap提供的CSS样式有<span class="it">列表组</span>、进度条、<span class="it">图标</span>、<span class="it">缩略图</span>、标签、导航、<span class="it">导航条</span>、分页导航、面包屑导航、按钮、<span class="it">按钮组</span>、<span class="it">输入框组</span>、<span class="it">面板</span>、<span class="it">表格</span>等</p>
+			<p>BootStrap提供的CSS样式有<span class="it">列表组</span>、进度条、<span class="it">图标</span>、<span class="it">缩略图</span>、标签、按钮、<span class="it">按钮组</span>、分页导航、面包屑导航、导航、<span class="it">导航条</span>、<span class="it">输入框组</span>、<span class="it">面板</span>、<span class="it">表格</span>等</p>
 			<h4>1.列表组</h4>
 			<code class="code">
 			列表组的使用方式为:<br />
@@ -46,13 +46,60 @@
 			  </div>
 			</div> 
 			<h3>2.图标</h3>
-			图标的使用方式为<code></code>
+			图标的使用方式为:<br />
+			<code>&ltspan class="glyphicon glyphicon-home"&gt</code><br />
+			效果如下：<br />
+			<span class="glyphicon glyphicon-home"></span><br />
+			<p class="important">
+			在使用字体图标的时候,css文件夹和font文件夹要处在同一层级。
+			</p>
 
-			<h4>按钮</h4>
+			<h3>3.缩略图</h3>
+			<p>
+				缩略图在平时的开发中通常结合BootStrap的栅格系统用来做图文混排，上面放置一张图片，下来配一些文字介绍。
+			</p>
+			<p>使用方式如下：</p>
+			<code>
+			&ltdiv class="row"&gt<br />
+				&nbsp&nbsp&ltdiv class="col-sm-6 col-md-4"&gt<br />
+					&nbsp&nbsp&nbsp&nbsp&ltdiv class="thumbnail"&gt<br />
+						&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&ltimg src="images/HTML.png" alt="..."&gt<br />
+						&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&ltdiv class="caption"&gt<br />
+		&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&lth3>Thumbnail label&lt/h3&gt<br />
+	&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&ltp>...&lt/p&gt<br />
+	&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&ltp><br />
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&lta href="#" class="btn btn-primary">Action&lt/a&gt<br />
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&lta href="#" class="btn btn-default">Action&lt/a&gt<br />
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&lt/p&gt<br />
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&lt/div&gt<br />
+	&nbsp&nbsp&nbsp&nbsp&lt/div&gt<br />
+				&nbsp&nbsp&lt/div&gt<br />
+			&lt/div&gt<br />
+
+			</code>
+			<p>效果如下：</p>
+			<div class="row">
+				<div class="col-sm-6 col-md-4">
+					<div class="thumbnail">
+						<img src="images/HTML.png" alt="...">
+						<div class="caption">
+						<h3>Thumbnail label</h3>
+						<p>...</p>
+						<p>
+							<a href="#" class="btn btn-primary">Action</a>
+							<a href="#" class="btn btn-default">Action</a>
+						</p>
+					</div>
+					</div>
+				</div>
+			</div>
+
+
+			<h3>4.按钮</h3>
 			<p>BootStrap样式表使用方式一般为(以按钮为例)<code>&ltbutton class="btn btn-success btn-xs" type="button"&gt</code>-><button class="btn btn-success btn-xs" type="button">按钮</button>在
 			<code>class="btn btn-default btn-xs"</code>中<code>class="btn"</code>提供按钮的基本样式，<code>class="btn-success"</code>提供我们当前按钮的具体样式，<code>class="btn-xs"</code>提供的样式为设定按钮的大小。根据我们的需求选择合适的class组合来实现按钮。所有的样式使用基本都遵循
 			<code>class="基本样式 具体样式 选择大小"</code>的使用规则。
-			<h4>按钮组</h4>
+			<h3>5.按钮组</h3>
 			<p>
 				<code class="code">
 					按钮组的使用方式为：<br />
@@ -74,16 +121,18 @@
 			</p>
 		</div>
 	</div>
-	
+	<div class="row">
+		<div class="col-lg-12">
+			<a type="button" href="#" class="btn btn-success pull-right">下一页</a>
+		</div>
+	</div>
 </div>
+
 
 <style>
 .it{color:red;font-weight:bold}
 .tf{text-indent:2em}
-.code-warp{width:auto;overflow:hidden;}
-@media (min-width:800px){
-	.code{width:auto;overflow:hidden;}
-}
+.code{width:auto}
 .code{display:inline-block;width:100%;overflow-x:scroll}
 .zt_hidden{overflow:hidden}
 </style>
