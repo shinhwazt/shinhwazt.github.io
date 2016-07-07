@@ -1,0 +1,155 @@
+<div class="container">
+	<h3>6.导航</h3>
+	<p>导航的使用方式为：</p>
+	<code>
+		&ltul class="nav nav-tabs"&gt<br />
+			&nbsp&nbsp&ltli&gt&lta href="javascript:void(0)"&gt导航一&lt/a&gt&lt/li&gt<br />
+			&nbsp&nbsp&ltli&gt&lta href="javascript:void(0)"&gt导航二&lt/a&gt&lt/li&gt<br />
+			&nbsp&nbsp&ltli&gt&lta href="javascript:void(0)"&gt导航二&lt/a&gt&lt/li&gt<br />
+		&lt/ul&gt
+	</code>
+	<p>效果如下：</p>
+	<ul class="nav nav-tabs">
+	  <li><a href="javascript:void(0)">导航一</a></li>
+	  <li><a href="javascript:void(0)">导航二</a></li>
+	  <li><a href="javascript:void(0)">导航二</a></li>
+	</ul> 
+	<p>导航的使用方式为<code>class="nav nav-tabs/tab-pills nav-stacked/nav-justified"</code>
+	<code>class="nav"</code>是导航的基本样式，<code>class="nav-tabs/nav-pills"</code>是导航的具体样式，<code>class="nav-tabs"</code>是上图效果中的导航、<code>class="nav-pills"</code>则是胶囊式导航，
+	<code>class="nav-stacked/nav-justified"</code>则是对我们的导航做进一步的进化，
+	<code>class="nav-stacked"</code>表示垂直导航，<code>class="nav-justified"</code>表示自适应的导航。</p>
+	<h3>6.分页导航</h3>
+	<p>BootStrap提供了两种分页导航，一种是带有多个页码的一种是只有上一页和下一页的。</p>
+	<h4>6.1页码分页</h4>
+	<p>页码方式的使用方式为：</p>
+	<code>
+		&ltul class="pagination"&gt<br />
+			&nbsp&nbsp&ltli&gt&lta href="#"&gt«&lt/a&gt&lt/li&gt<br /> <!-- 上一页 -->
+			&nbsp&nbsp&ltli&gt&lta href="#"&gt1&lt/a&gt&lt/li&gt<br />
+			&nbsp&nbsp&ltli&gt&lta href="#"&gt2&lt/a&gt&lt/li&gt<br />
+			&nbsp&nbsp&ltli&gt&lta href="#"&gt3&lt/a&gt&lt/li&gt<br />
+			&nbsp&nbsp&ltli&gt&lta href="#"&gt»&lt/a&gt&lt/li&gt <br /><!-- 下一页 -->
+		&lt/ul>
+	</code>
+	<p>效果如下：</p>
+	<ul class="pagination">
+	  <li><a href="javascrip:void(0)">«</a></li>
+	  <li><a href="javascrip:void(0)">1</a></li>
+	  <li><a href="javascrip:void(0)">2</a></li>
+	  <li><a href="javascrip:void(0)">3</a></li>
+	  <li><a href="javascrip:void(0)">»</a></li>
+	</ul> 
+	<h4>6.2上一页，下一页</h4>
+	<p>使用方式为：</p>
+	<code>
+		&ltul class="pager"&gt<br />
+			&nbsp&nbsp&ltli>&lta href="#"&gt上一页&lt/a&gt&lt/li&gt<br />
+			&nbsp&nbsp&ltli>&lta href="#"&gt下一页&lt/a&gt&lt/li&gt<br />
+		&lt/ul&gt<br />
+	</code>
+	<p>效果如下</p>
+	<ul class="pager">
+		<li><a href="javascrip:void(0)">上一页</a></li>
+		<li><a href="javascrip:void(0)">下一页</a></li>
+	</ul>
+	<ul class="pager">
+		<li class="pull-left"><a href="javascrip:void(0)">上一页</a></li>
+		<li class="pull-right"><a href="javascrip:void(0)">下一页</a></li>
+	</ul>
+	<h3>7.面包屑导航</h3>
+	<p>面包屑导航在平时的开发中主要提示我们当前所处的页面的层级，同时提供给查看上面层级的超链接</p>
+	<p>使用方式如下：</p>
+	<code>
+		&ltul class="breadcrumb"&gt<br />
+			&nbsp&nbsp&ltli&gt&lta href="javascript:void(0)"&gtHome&lt/a&gt&lt/li&gt<br />
+			&nbsp&nbsp&ltli&gt&lta href="javascript:void(0)"&gtLibrary&lt/a&gt&lt/li&gt<br />
+			&nbsp&nbsp&ltli class="active">Data&lt/li&gt<br />
+		&lt/ul&gt
+	</code>
+	<p>效果如下：</p>
+	<ul class="breadcrumb">
+	  <li><a href="javascript:void(0)">Home</a></li>
+	  <li><a href="javascript:void(0)">Library</a></li>
+	  <li class="active">Data</li>
+	</ul> 
+	<h3>8.导航条</h3>
+	<p>导航条的使用方式为：</p>
+	
+	<code>
+		&ltdiv class="navbar navbar-default" role="navigation"&gt<br />
+			&nbsp&nbsp&ltdiv class="navbar-header"&gt<br />
+				&nbsp&nbsp&nbsp&nbsp&lta class="navbar-brand" href="#"&gtBrand&lt/a&gt<br />
+			&nbsp&nbsp&lt/div&gt<br />
+			&nbsp&nbsp&ltul class="nav navbar-nav"&gt<br />
+				&nbsp&nbsp&nbsp&nbsp&ltli class="active"&gt&lta href="#"&gtactive&lt/a&gt&lt/li&gt<br />
+				&nbsp&nbsp&nbsp&nbsp&ltli&gt&lta href="javascrip:void(0)"&gtLink&lt/a&gt&lt/li&gt<br />
+				&nbsp&nbsp&nbsp&nbsp&ltli class="disabled"&gt&lta href="#"&gtdisabled&lt/a&gt&lt/li&gt<br />
+				&nbsp&nbsp&nbsp&nbsp&ltli&gt&lta href="javascrip:void(0)"&gtLink&lt/a&gt&lt/li&gt<br />
+			&nbsp&nbsp&lt/ul&gt<br />
+		&lt/div&gt
+	
+	</code>
+	<p>效果如下：</p>
+	<div class="navbar navbar-default" role="navigation">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="javascrip:void(0)">Brand</a>
+		</div>
+		<ul class="nav navbar-nav">
+			<li class="active"><a href="javascrip:void(0)">active</a></li>
+			<li><a href="javascrip:void(0)">Link</a></li>
+			<li class="disabled"><a href="javascrip:void(0)">disabled</a></li>
+			<li><a href="javascrip:void(0)">Link</a></li>
+		</ul>
+	</div>
+	<p>响应式导航条使用方式为：</p>
+	<code>
+		&ltdiv class="navbar navbar-default" role="navigation"&gt<br />
+			&nbsp&nbsp&ltdiv class="navbar-header"&gt<br />
+				&nbsp&nbsp&nbsp&nbsp&lta class="navbar-brand" href="#"&gtBrand&lt/a&gt<br />
+				&nbsp&nbsp&nbsp&nbsp&ltbutton type="button" class="navbar-toggle" data-toggle="collapse"
+				data-target=".zt"&gt<br />
+					&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&ltspan class="icon-bar"&gt&lt/span&gt<br />
+					&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&ltspan class="icon-bar"&gt&lt/span&gt<br />
+					&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&ltspan class="icon-bar"&gt&lt/span&gt<br />
+				&nbsp&nbsp&nbsp&nbsp&lt/button&gt<br />
+			&nbsp&nbsp&lt/div&gt<br />
+&nbsp&nbsp&ltdiv class="collapse navbar-collapse zt"&gt<br />
+
+			&nbsp&nbsp&nbsp&nbsp&ltul class="nav navbar-nav"&gt<br />
+				&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&ltli class="active"&gt&lta href="#"&gtactive&lt/a&gt&lt/li&gt<br />
+				&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&ltli&gt&lta href="javascrip:void(0)"&gtLink&lt/a&gt&lt/li&gt<br />
+				&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&ltli class="disabled"&gt&lta href="#"&gtdisabled&lt/a&gt&lt/li&gt<br />
+				&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&ltli&gt&lta href="javascrip:void(0)"&gtLink&lt/a&gt&lt/li&gt<br />
+			&nbsp&nbsp&nbsp&nbsp&lt/ul&gt<br />
+	&nbsp&nbsp&lt/div&gt<br />
+		&lt/div&gt
+	
+	</code>
+	<p>效果为：(窗口缩小到超小分辨率)</p>
+	<div class="navbar navbar-default" role="navigation">
+	  <div class="navbar-header">
+		<a class="navbar-brand" href="javascrip:void(0)">Brand</a>
+		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".zt">
+		  <span class="icon-bar"></span>
+		  <span class="icon-bar"></span>
+		  <span class="icon-bar"></span>
+		</button>
+	  </div>
+	  <div class="collapse navbar-collapse zt">
+		<ul class="nav navbar-nav">
+		  <li class="active"><a href="javascrip:void(0)">active</a></li>
+		  <li><a href="javascrip:void(0)">Link</a></li>
+		  <li class="disabled"><a href="javascrip:void(0)">disabled</a></li>
+		  <li><a href="javascrip:void(0)">Link</a></li>
+		</ul>
+	  </div>
+	</div> 
+	<p>相比于普通的导航发生了变化：在<code>class="navbar-header"</code>的容器里面添加了
+	<code>&ltbutton&gt</code>元素该元素的关键属性为<code>class="navbar-toggle"</code>,
+	<code>data-toggle="collapse"</code>，<code>data-target=".zt"</code>(data-target属性值是随意的但是要对应后面<code>&ltdiv&gt</code>的class或者id),后面的<code>&ltul&gt</code>外面包裹了<code>&ltdiv&gt</code>
+	该元素属性为<code>class="collapse navbar-collapse zt"</code>,前两个类名是固定的最后一个要和
+	<code>data-target</code>相对应。</p>
+	
+
+
+</div>
