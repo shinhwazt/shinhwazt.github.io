@@ -1,3 +1,6 @@
+<style>
+.customZt{text-align:left}
+</style>
 <div class="container">
 	<div class="row">
 		<div class="col-lg-12">
@@ -98,7 +101,7 @@
 			<p>如果想要这种效果：</p>
 			<form class="form-horizontal">
 				<div class="form-group">
-					<label class="control-label col-lg-1 col-xs-3">年龄：</label>
+					<label class="control-label col-lg-1 col-xs-3 customZt">年龄：</label>
 					<div class="col-lg-11 col-xs-9">
 						<input class="form-control" />
 					</div>
@@ -115,17 +118,39 @@
 				&nbsp&nbsp&lt/div&gt<br />
 			&lt/form&gt
 			</code>
-			
-
-			
-
-
-
-
-
-
-
-
+			<h3>9.面板</h3>
+			<p>面板通常就是放置元素的一个容器</p>
+			<p>面板的使用方式为：</p>
+			<code>
+			&ltdiv class="panel panel-default"&gt<br />
+				&nbsp&nbsp&ltdiv class="panel-heading">面板头部&lt/div&gt<br />
+				&nbsp&nbsp&ltdiv class="panel-body">面板内容&lt/div&gt<br />
+				&nbsp&nbsp&ltdiv class="panel-footer">面板尾部&lt/div&gt<br />
+			&lt/div&gt
+			</code>
+			<p>效果如下：</p>
+			<div class="panel panel-default">
+				<div class="panel-heading">面板头部</div>
+				<div class="panel-body">面板内容</div>
+				<div class="panel-footer">面板尾部</div>
+			</div>
+			<h3>10.表格</h3>
+			<p>表格的使用方式为：</p>
+			<code>
+			&lttable class="table table-striped"&gt&lt/table&gt
+			</code>
+			<code>class="table"</code>:是默认样式，<code>class="table-striped"</code>:表示隔行变色的表格，
+			<code>class="table-bordered"</code>:表示单边框的表格，<code>class="table-hover"</code>:
+			表示带鼠标滑过效果的表格，<code>class="condensed"</code>:表示紧凑型的表格。
+			<p class="important">通常面板和表格混合使用。</p>
 		</div>
 	</div>
 </div>
+<script>
+$(function(){
+	$(window).scrollTop(0);
+	$(".nav li").removeClass("active");
+	$(".nav li:nth-child(2)").addClass("active");
+
+})
+</script>
