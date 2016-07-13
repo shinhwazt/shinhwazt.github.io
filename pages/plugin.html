@@ -1,0 +1,93 @@
+<div class="container">
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="btn-group">
+				<a class="btn btn-success">模态弹窗</a>
+				<a class="btn btn-default">下拉菜单</a>
+				<a class="btn btn-success">轮播</a>
+				<a class="btn btn-default">选项卡</a>
+				<a class="btn btn-success">滚动侦测</a>
+				<a class="btn btn-default">折叠</a>
+			</div>
+			<h3>模态弹窗</h3>
+			<p>模态弹窗的使用方式为：</p>
+			<p class="important">出发元素设置：</p>
+			<code>
+			&ltbutton class="btn btn-success " data-toggle="modal" data-target="#modal"&gt模态弹窗
+			&lt/button&gt
+			</code>
+			<p class="important">模态弹窗结构设置：</p>
+			<code>
+			&ltdiv class="modal fade" id="modal"&gt
+				&nbsp&nbsp&ltdiv class="modal-dialog"&gt<br />
+					&nbsp&nbsp&nbsp&nbsp&ltdiv class="modal-content"&gt<br />
+						&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&ltdiv class="modal-header"&gt<br />
+						&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&lt/div&gt<br />
+						&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&ltdiv class="modal-body"&gt<br />
+						&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&lt/div&gt<br />
+						&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&ltdiv class="modal-footer"&gt<br />
+						&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&lt/div&gt<br />
+					&nbsp&nbsp&nbsp&nbsp&lt/div&gt<br />
+				&nbsp&nbsp&lt/div&gt<br />
+			&lt/div&gt
+			</code>
+			<p>触发元素上的关键样式为<code>data-toggle="modal"</code>(所有BootStrap必须指定)
+			<code>data-target="#modal"</code>(这个属性的值必须对应模态弹窗的ID或者class)</p>
+			<p>模态弹窗的HTML结构必须按照上面的规则进行嵌套。其中<code>class="modal"</code>
+			提供了一个全屏的背景，<code>class="modal-dialog"</code>是内容的部分他决定弹窗的宽度(
+			模态弹窗提供了<code>class="modal-lg"</code><code>class="modal-sm"</code>来改变弹窗的大小
+			所以要改变模态弹窗的大小这两个样式要应用在<code>class="modal-dialog"</code>的元素上)同时
+			<code>class="modal-dialog"</code>决定内容的上边边距和左右居中,<code>class="modal-content"</code>包裹的则是模态弹窗的具体内容-被
+			<code>class="modal-header"</code>,<code>class="modal-body"</code>,<code>class="modal-footer"
+			</code>修饰的三个元素
+			</p>
+			<p>在<code>&ltdiv class="modal-header"&gt&lt/div&gt</code>中通常放置一个标题和一个关闭按钮具体方式如下:</p>
+			<code>
+			&ltdiv class="modal-header"&gt<br />
+				&nbsp&nbsp&ltbutton class="close" data-dismiss="modal"&gtX&lt/button&gt<br />
+				&nbsp&nbsp&ltdiv class="modal-title"&gt标题&lt/div&gt<br />
+			&lt/div&gt
+			</code>
+			<p>关闭按钮的关键属性为<code>class="close"</code>(只是提供样式作)<code>data-dismiss="modal"
+			</code>(真正提供关闭模态弹窗的功能)
+			同时模态弹窗的标题要放在<code>class="modal-title"</code>的元素里面。</p>
+			<p><code>&ltdiv class="modal-body"&gt&lt/div&gt</code>是模态弹窗的主体内容(可以有多个)，
+			通常放置提示信息或者表单信息</p>
+			<p><code>&ltdiv class="modal-footer"&gt&lt/div&gt</code>中通常放置按钮</p>
+
+
+
+
+			<button class="btn btn-success " data-toggle="modal" data-target="#modal">
+			模态弹窗测试 </button>
+			<div class="modal fade" id="modal">   
+				<div class="modal-dialog modal-lg modal-sm">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button class="close" data-dismiss="modal">X</button>
+							<div class="modal-title">标题</div>
+						</div>
+					    <div class="modal-body">
+					    modal-body
+					    </div>
+					    <div class="modal-body">
+					    modal-body
+					    </div>
+					    <div class="modal-body">
+					    modal-body
+					    </div>
+					    <div class="modal-footer">
+						  <button class="btn btn-deafult" data-dismiss="modal">关闭</button>
+						  <button class="btn btn-success">确定</button>
+					    </div>
+					</div>
+				</div>
+			</div> 
+
+	
+
+
+
+		</div>
+	</div>
+</div>
