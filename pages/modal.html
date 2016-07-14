@@ -2,8 +2,8 @@
 	<div class="row">
 		<div class="col-lg-12">
 			<div class="btn-group">
-				<a class="btn btn-success">模态弹窗</a>
-				<a class="btn btn-default">下拉菜单</a>
+				<a class="btn btn-success" href="#/modal">模态弹窗</a>
+				<a class="btn btn-default" href="#/dropdown">下拉菜单</a>
 				<a class="btn btn-success">轮播</a>
 				<a class="btn btn-default">选项卡</a>
 				<a class="btn btn-success">滚动侦测</a>
@@ -31,7 +31,7 @@
 				&nbsp&nbsp&lt/div&gt<br />
 			&lt/div&gt
 			</code>
-			<p>触发元素上的关键样式为<code>data-toggle="modal"</code>(所有BootStrap必须指定)
+			<p>触发元素上的关键样式为<code>data-toggle="modal"</code>(所有BootStrap插件都必须指定)
 			<code>data-target="#modal"</code>(这个属性的值必须对应模态弹窗的ID或者class)</p>
 			<p>模态弹窗的HTML结构必须按照上面的规则进行嵌套。其中<code>class="modal"</code>
 			提供了一个全屏的背景，<code>class="modal-dialog"</code>是内容的部分他决定弹窗的宽度(
@@ -41,7 +41,8 @@
 			<code>class="modal-header"</code>,<code>class="modal-body"</code>,<code>class="modal-footer"
 			</code>修饰的三个元素
 			</p>
-			<p>在<code>&ltdiv class="modal-header"&gt&lt/div&gt</code>中通常放置一个标题和一个关闭按钮具体方式如下:</p>
+			<p>在<code>&ltdiv class="modal-header"&gt&lt/div&gt</code>中通常放置一个关闭按钮和一个标题
+			(按钮要写在标题的前面)具体方式如下:</p>
 			<code>
 			&ltdiv class="modal-header"&gt<br />
 				&nbsp&nbsp&ltbutton class="close" data-dismiss="modal"&gtX&lt/button&gt<br />
@@ -54,9 +55,19 @@
 			<p><code>&ltdiv class="modal-body"&gt&lt/div&gt</code>是模态弹窗的主体内容(可以有多个)，
 			通常放置提示信息或者表单信息</p>
 			<p><code>&ltdiv class="modal-footer"&gt&lt/div&gt</code>中通常放置按钮</p>
-
-
-
+			<p>BootStrap提供的插件有两种使用方式，一种是属性使用方式、一种是JS使用方式。</p>
+			<p>在定义好模态弹窗的结构之后、我们可以使用JS的方式<code>
+			$("模态弹窗").modal()</code>来操作弹窗。<code>
+			$("模态弹窗").modal()</code>方法可以接收参数，<code>"show","hide","toggle"</code>分别
+			表示显示模态弹窗，隐藏模态弹窗，切换模态弹窗的显示和隐藏。同时该方法也可以接收一个对象
+			<code>{backgrop:"static",keyboard:false}</code></p>
+			<p>模态弹窗插件也为我们提供了事件。使用方式为<code>
+			$("模态弹窗").on("modal自定义事件",function(){do sth...})</code></p>
+			<p><code>show.bs.modal</code>在点击了触发按钮之后模态弹窗显示之前触发。</p>
+			<p><code>shown.bs.modal</code>在模态弹窗完全显示(动画也执行完成后)之后触发。</p>
+			<p><code>hide.bs.modal</code>在模态弹窗关闭开始时触发(事件函数执行完成之后模态弹窗才开
+			始关闭)。</p>
+			<p><code>hidden.bs.modal</code>在模态弹窗完全关闭时触发。</p>
 
 			<button class="btn btn-success " data-toggle="modal" data-target="#modal">
 			模态弹窗测试 </button>
@@ -64,7 +75,7 @@
 				<div class="modal-dialog modal-lg modal-sm">
 					<div class="modal-content">
 						<div class="modal-header">
-							<button class="close" data-dismiss="modal">X</button>
+							<button class="close" data-dismiss="modal">&times</button>
 							<div class="modal-title">标题</div>
 						</div>
 					    <div class="modal-body">
@@ -91,3 +102,10 @@
 		</div>
 	</div>
 </div>
+<script>
+$(function(){
+	$(window).scrollTop(0);
+	$(".nav li").removeClass("active");
+	$(".nav li:nth-child(4)").addClass("active");
+})
+</script>
