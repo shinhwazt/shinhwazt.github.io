@@ -1,0 +1,104 @@
+<style>
+.customImg img{margin:0 auto}
+</style>
+<div class="container">
+	<div class="row">
+		<div class="col-lg-12">
+
+
+
+		<h3>旋转轮播</h3>
+		<p>轮播的基本结构如下：</p>
+		<code>
+		&ltdiv class="carousel slide" data-ride="carousel" id="carousel-container"><br />
+			&nbsp&nbsp&ltdiv class="carousel-inner"&gt<br />
+			&nbsp&nbsp&lt/div&gt<br />
+			&nbsp&nbsp&ltol class="carousel-indicators"&gt<br />
+			&nbsp&nbsp&lt/ol&gt<br />
+			&nbsp&nbsp&lta data-slide="prev" data-target="#carousel-container" class="left carousel-control"&gt<br />
+			&nbsp&nbsp&lt/a&gt<br />
+			&nbsp&nbsp&lta data-slide="next" data-target="#carousel-container" class="right carousel-control"&gt<br />
+			&nbsp&nbsp&lt/a&gt<br />
+		&lt/div&gt
+		</code>
+		<p><code>&ltdiv class="carousel slide" data-ride="carousel" id="carousel-container"></code>
+		是轮播最外层的容器，关键的属性为<code>data-ride="carousel"</code><code>
+		class="carousel slide"</code><code>id="ID"</code>(为了和后面对应)，最外层容器包括四部分</p>
+		<p>1.图片容器<code>&ltdiv class="carousel-inner"&gt&lt/div&gt</code></p>
+		<p>2.标识容器<code>&ltol class="carousel-indicators"&gt&lt/ol&gt</code></p>
+		<p>1.左箭头容器<code>&lta data-slide="prev" data-target="#carousel-container" 
+		class="left carousel-control"&gt&lt/a&gt</code></p>
+		<p>1.右箭头容器<code>&lta data-slide="next" data-target="#carousel-container" 
+		class="right carousel-control"&gt&lt/a&gt</code></p>
+		<p>1.1图片容器中的内部结构为：</p>
+		<code>
+		&ltdiv class="carousel"&gt<br />
+			&nbsp&nbsp&ltdiv class="item"&gt&ltimg src="~" alt="laugh"&gt&lt/div&gt<br />
+			&nbsp&nbsp&ltdiv class="item"&gt&ltimg src="~" alt="laugh"&gt&lt/div&gt<br />
+			&nbsp&nbsp&ltdiv class="item"&gt&ltimg src="~" alt="laugh"&gt&lt/div&gt<br />
+		&lt/div&gt
+		</code>
+		<p>2.1标识容器中的内部结构为：</p>
+		<code>
+		&ltol class="carousel-indicators"&gt<br />
+			&nbsp&nbsp&ltli data-slide-to="0" data-target="#carousel-container"&gt&lt/li&gt<br />
+			&nbsp&nbsp&ltli data-slide-to="0" data-target="#carousel-container"&gt&lt/li&gt<br />
+			&nbsp&nbsp&ltli data-slide-to="0" data-target="#carousel-container"&gt&lt/li&gt<br />
+		&lt/ol&gt
+		</code>
+		<p>3.1左箭头容器中的内部结构为：</p>
+		<code>
+		&lta data-slide="prev" data-target="#carousel-container" class="left carousel-control"&gt<br />
+			&nbsp&nbsp&ltspan class="glyphicon glyphicon-chevron-left"&gt&lt/span&gt<br />
+		&lt/a&gt
+		</code>
+		<p>4.1左箭头容器中的内部结构为：</p>
+		<code>
+		&lta data-slide="next" data-target="#carousel-container" class="right carousel-control"&gt<br />
+			&nbsp&nbsp&ltspan class="glyphicon glyphicon-chevron-right"&gt&lt/span&gt<br />
+		&lt/a&gt
+		</code>
+
+
+<div class="carousel slide customImg" data-ride="carousel" id="carousel-container">
+  <div class="carousel-inner">
+	  <div class="item active"><a href="javascript:void(0)"><img src="images/nspring.jpg" alt="laugh"></a></div>
+	  <div class="item"><img src="images/nsummer.jpg" alt="laugh"></div>
+	  <div class="item"><img src="images/nautum.jpg" alt="laugh"></div>
+	  <div class="item"><img src="images/nwinter.jpg" alt="laugh"></div>
+  </div>
+  <ol class="carousel-indicators">
+	  <li data-slide-to="0" data-target="#carousel-container" class="active"></li>
+	  <li data-slide-to="1" data-target="#carousel-container"></li>
+	  <li data-slide-to="2" data-target="#carousel-container"></li>
+	  <li data-slide-to="3" data-target="#carousel-container"></li>
+  </ol>
+  <a data-slide="prev" data-target="#carousel-container" class="left carousel-control">
+	  <span class="glyphicon glyphicon-chevron-left"></span>
+  </a>
+  <a data-slide="next" data-target="#carousel-container" class="right carousel-control">
+	  <span class="glyphicon glyphicon-chevron-right"></span>
+  </a>
+</div> 
+
+
+
+
+
+
+
+
+
+
+
+		
+
+
+
+
+
+
+
+		</div>
+	</div>
+</div>
