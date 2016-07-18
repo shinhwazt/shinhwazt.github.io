@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=devich-width, initial-scale=1">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="shinhwa的博客">
+  <meta name="Description" content="">
+  <title>Shinhwa</title>
+  <link href="css/bootstrap.css" rel="stylesheet">
+  <link rel="shortcut icon" href="favicon.ico" />
+  <script src="js/jquery.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  
+  <style>
+  .textIndent{text-indent:2em}
+  .line{height:1px;border-top:1px solid red;margin-bottom:10px}
+  </style>
+  <script>
+  
+  
+  </script>
+ </head>
+ <body>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+			<h3>AJAX</h3>
+			<p>ajax在我们平时的开发中只有一个作用就是用来进行数据的交互</p>
+			<p>JQ为我们封装了ajax使用的基本方式为：</p>
+			<pre>
+			$.ajax({
+				url:"/admin/text",
+				type:"post",
+				data:data,
+				contentType:"application/json; charset=utf-8",
+				dataType:"json",
+				success:function(data){do sth...},
+				error:function(){do sth...}
+			})
+			</pre>
+			<p>$.ajax()是JQ给我们提供的方法，同时这个方法接收一个对象{}作为参数，该参数的具体属性如下：</p>
+			<p>1.url。这是我们进行数据交互的地址(如果使用的是.NET MVC该值通常就是/admin/config,或者XX.JSP,YY.php,Java的话就是在配置文件中配置的映射)</p>
+			<p>2.type。这是我们进行数据交互的方式，通常我们使用的是post或者get。两者的区别为get数据传输的容量较小，数据传输的时候是附加在url后面的在url中通过?分割服务器地址和传输的数据，传输数据之间通过&分隔(www.baidu.com?name=zt&age=22),post方式的数据容量较大传输数据的时候不是附加在url后面而是在post body中且post传输的数据不能被缓存。</p>
+			<p>3.data。这是我们在进行数据交互时，从前台传递给浏览器的数据，通常的使用方式为
+			data:$("表单").serialize()或者data:JSON.stringify({name:"zt",age:22})如果是通过前者传输数据
+		    则contentType可以省略，如果是通过后者传输数据则contentType应为
+			contentType:"application/json; charset=utf-8"，如果不需要从前台向服务器传输数据则可以省略</p>
+			<p>4.contentType。contentType一般有四种方式分别为
+			contentType:"applicaton/x-www-form-urlencoded",contentType:"application/json",
+			contentType:"multipart/form-data",contentType:"text/xml"<p>
+			<p class="textIndent">4.1contentType:"application/x-www-urlencoded"。这是方式为表单提交，
+			在form表单没有设置enctype属性时时通过这个方式传输数据，默认方式，可以省略</p>
+			<p class="textIndent">4.2contentType:"application/json"。这种方式表示告诉服务器，传输的数据格
+			式为序列化之后的JSON数据(如果我们想后台发送的数据为data:JSON.stringify({name:"zt",age:22})
+			则contentType应该设置为contentType:"application/json; charset=utf-8"，如果发送的数据为
+			data:$("表单").serialize()，则contentType不用设置，或设置为contentType:
+			"application/x-www-urlencoded")</p>
+			<p class="textIndent">4.3contentType:"multipart/form-data"。这种方式通常在文件上传中才会用
+			到，此时form表单中应该设置属性enctype="multipart/form-data"</p>
+			<p class="textIndent">4.4contentType:"text/xml"。这种方法表示数据已xml文本的方式来传输(
+			正常情况下不会使用这个方式)。</p>
+			<p>5.dataType。预期从服务器返回的数据类型通常设置为dataType:"json"。</p>
+			<p>6.success。改参数为本次请求成功后所执行的方式接收一个参数表示在进行数据交互时从后台取到
+			的数据(success:function(data){console.log("data是我们从服务器获取到的具体数据")})</p>
+			<p>JQ的$.ajax()方式的简单用法就是这些，复杂用法自行科普~</p>
+			<div class="line"></div>
+			<p>ajax进行数据交互的核心为XMLHttpRequest。在进行异步数据交互的时候需要用到它的两个方法
+			open(),send()一个事件onreadystatechange以及三个属性responseText,readyState,status。</p>
+			<p>ajax的执行过程就像是我们的行为一样：首先我们想要干一件大事!(open())然后我们付诸行动
+			(send())。在这个过程中(onreadystatechange)我们会遇见各种问题!最终我们会得到一个结果
+			(responseText)。</p>
+			<pre>
+			if(window.XHRHttpRequest){
+				var xhr = new XMLHttpRequest();//我们的操作都是建立在XMLHttpRequest上的首先获取xhr对象
+			}else{
+				var xhr = new ActiveXObject("Microsoft.XMLHTTP");//兼容IE6
+			}
+			xhr.open("get","/UserManage/getAllUser",true);
+			xhr.send(null);
+			xhr.onreadystatechange = function(){
+				if(xhr.readyState==4&&xhr.status==200){//这两个条件表示本次请求成功
+					console.log(xhr.responseText);//xhr.responseText表示请求到的数据
+				}else{
+					throw new Error("error");
+				}
+			}
+			</pre>
+			<p>xhr.open()方法接受三个参数，第一个表示我们请求的方式一般为get或者post，第二个参数表示我
+			们请求的地址，第三个参数表示同步或者异步(true表示进行异步请求)</p>
+			<p>xhr.send()方式表示发送请求到目标url，该方法可以接收一个参数，参数是一个字符串或者DOM
+			对象，如果xhr.open()的第一个参数
+			为get则xhr.send()参数为null，如果xhr.open()的第一个参数为post，则xhr,open()可以接收一个
+			参数，该参数会传输到目标url(一般就是我们要从前台发送到服务器的数据)</p>
+			<p>xhr.onreadystatechange表示我们在请求的过程中所执行的事件，对应着xhr.readyState
+			的改变过程，当readySate为0时表示请求在初始化，1时表示服务器连接已建立，2时表示请求已接收，3时
+			表示请求处理中，4时表示请求已完成且响应已就绪，另一个条件xhr.status，200表示ok，404表示
+			未找到页面。</p>
+			<p>xhr.responseText表示请求成功所获得的数据，该属性的值是一个字符串，如果服务器发送的是一
+			个json格式的数据我们可以使用JSON.parse(str)进行解析获取数据的json对象。</p>
+			<p class="textIndent">JSON.stringify(json)用来把一个JSON对象序列化成一个JSON字符串，在从
+			前台向服务器传输JSON数据时需要使用这个方法。</p>
+			<p class="textIndent">JSON.parse(str)用来一个JSON字符串解析成一个JSON数据对象，在获得从
+			服务器返回的数据后需要这个方法。</p>
+			
+			
+
+
+
+
+
+
+
+
+			</div>
+		</div>
+	</div>
+ </body>
+</html>
