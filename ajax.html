@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" ng-app="myApp">
+<html lang="en">
  <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=devich-width, initial-scale=1">
@@ -16,6 +16,7 @@
   <style>
   .textIndent{text-indent:2em}
   .line{height:1px;border-top:1px solid red;margin-bottom:10px}
+  .mt{margin-top:50px}
   </style>
   <script>
   
@@ -23,11 +24,28 @@
   </script>
  </head>
  <body>
-	<div class="container">
+ <div class="navbar navbar-default navbar-fixed-top">
+	<div class="navbar-header">
+		<button data-toggle="collapse" class="navbar-toggle" data-target=".navbar-responsive-collapse">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</button>
+		<a class="navbar-brand" href="ajax.html">AJAX</a>
+	</div>
+	<div class="collapse navbar-collapse navbar-responsive-collapse">
+		<ul class="nav navbar-nav">
+			<li><a href="#jqajax">JQ使用ajax</a></li>
+			<li><a href="#jsajax">JS操作ajax</a></li>
+			<li><a href="#jsonp">跨域操作</a></li>
+		</ul>
+	</div>
+ </div>
+	<div class="container mt" >
 		<div class="row">
 			<div class="col-lg-12">
 			<h3>AJAX</h3>
-			<p>ajax在我们平时的开发中只有一个作用就是用来进行数据的交互</p>
+			<p id="jqajax">ajax在我们平时的开发中只有一个作用就是用来进行数据的交互</p>
 			<p>JQ为我们封装了ajax使用的基本方式为：</p>
 			<pre>
 			$.ajax({
@@ -66,7 +84,8 @@
 			的数据(success:function(data){console.log("data是我们从服务器获取到的具体数据")})</p>
 			<p>JQ的$.ajax()方式的简单用法就是这些，复杂用法自行科普~</p>
 			<div class="line"></div>
-			<p>ajax进行数据交互的核心为XMLHttpRequest。在进行异步数据交互的时候需要用到它的两个方法
+			<p id="jsajax">ajax进行数据交互的核心为XMLHttpRequest。在进行异步数据交互的时候需要用到它的
+			两个方法
 			open(),send()一个事件onreadystatechange以及三个属性responseText,readyState,status。</p>
 			<p>ajax的执行过程就像是我们的行为一样：首先我们想要干一件大事!(open())然后我们付诸行动
 			(send())。在这个过程中(onreadystatechange)我们会遇见各种问题!最终我们会得到一个结果
@@ -95,14 +114,110 @@
 			参数，该参数会传输到目标url(一般就是我们要从前台发送到服务器的数据)</p>
 			<p>xhr.onreadystatechange表示我们在请求的过程中所执行的事件，对应着xhr.readyState
 			的改变过程，当readySate为0时表示请求在初始化，1时表示服务器连接已建立，2时表示请求已接收，3时
-			表示请求处理中，4时表示请求已完成且响应已就绪，另一个条件xhr.status，200表示ok，404表示
-			未找到页面。</p>
+			表示请求处理中，4时表示请求已完成且响应已就绪，另一个条件xhr.status，200表示ok，30X表
+			示重定向，40X表示客户端错误，50X表示服务端错误。</p>
 			<p>xhr.responseText表示请求成功所获得的数据，该属性的值是一个字符串，如果服务器发送的是一
 			个json格式的数据我们可以使用JSON.parse(str)进行解析获取数据的json对象。</p>
 			<p class="textIndent">JSON.stringify(json)用来把一个JSON对象序列化成一个JSON字符串，在从
 			前台向服务器传输JSON数据时需要使用这个方法。</p>
 			<p class="textIndent">JSON.parse(str)用来一个JSON字符串解析成一个JSON数据对象，在获得从
 			服务器返回的数据后需要这个方法。</p>
+			<p>简单封装ajax方法实现：</p>
+			<pre>
+			function GPData(obj) {
+				var _default = {//默认参数设置
+					url: null,
+					type: "post",
+					data: null,
+					contentType: "application/x-www-form-urlencoded; charset=utf-8",
+					dataType: "json",
+					success: function () { },
+					error: function () { },
+				};
+				CloneObj(_default,obj);//实际参数属性覆盖默认参数
+				if (window.XMLHttpRequest) {
+					var xhr = new XMLHttpRequest();
+				} else {
+					var xhr = new ActiveXObject("Microsoft.XMLHTTP");
+				}
+				xhr.open(_default.type, _default.url, true);
+				xhr.setRequestHeader("Content-Type", _default.contentType);
+				xhr.send(_default.data);
+				xhr.onreadystatechange = function () {
+					if (xhr.readyState == 4 && xhr.status == 200) {
+						var data = JSON.parse(xhr.responseText);
+						_default.success(data);
+					} else if (xhr.readyState == 4 && xhr.status >= 500) {
+						_default.error();
+					}
+				}
+			}
+			function CloneObj(oldObj, newObj) {
+				for (var item in newObj) {
+					oldObj[item] = newObj[item];
+				}
+			}
+			</pre>
+			<p>简单链式方式实现：</p>
+			<pre>
+			function GPData() {
+				this.data = null;
+				this.successPools = [];
+				this.errorPools = [];
+				window.XMLHttpRequest?this.xhr = new XMLHttpRequest():this.xhr =
+				new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			GPData.prototype.when = function(type,url,data){
+				var _this = this;
+				if(arguments.length==3){
+					this.xhr.open(type,url,true);
+					this.xhr.send(JSON.stringify(data));
+					this.xhr.onreadystatechange = function(){
+						if(_this.xhr.readyState==4&&_this.xhr.status==200){
+							_this.data = JSON.parse(_this.xhr.responseText);
+							_this.successPools[0](_this.data);
+						}else if(_this.readyState==4&&_this.status>=500){
+							_this.errorPools[0]();
+						}
+					}
+				}
+				return _this;
+			}
+			GPData.prototype.done = function(callback){
+				this.successPools.push(callback);
+				return this;
+			}
+			GPData.prototype.fail = function(callback){
+				this.errorPools.push(callback);
+				return this;
+			}
+		  </pre>
+		  <div class="line"></div>
+		  <p id="jsonp">跨域使用ajax--jsonp</p>
+		  <p>JQ使用跨域的方式很简单，但是只支持GET方式，使用时只需要把dataType改为dataType:"jsonp",
+		  该属性后再添加一个属性：jsonp:"callback"(该值是可以随意设置的在后台同名获取即可)
+		  此时后台返回的数据不再是原来的格式而是callback(原来的值)这种格式，等同于函数调用并且
+		  给函数传递一个参数。</p>
+		  <p>JQ使用的另一种方式为：</p>
+		  <p>我们事先定义好一个函数</p>
+		  <pre>
+		  &ltscript&gt
+		  function fn(data){
+			use data to do sth...
+		  }
+		  $.getScript("http://xxx.yyy.com?callback=fn")
+		  &lt/script&gt
+		  </pre>
+		  <p>只需要保证函数名称和url中的参数callback同名即可(同时后台需要做相应的改动应该返回一个
+		  fn(data))</p>
+		  <p>这种方式的原理就是我们事先定义好一个函数，这个函数接收一个参数(参数就是我们需要从后台
+		  取到的数据)我们利用这个参数去达到我们的目的。而后面的$.getScript()方法主要就是创建
+		  一个&ltscript&gt标签主要作用就是调用我们事先定义的函数，同时把取到的数据作为实际参数
+		  传递进去。</p>
+
+
+
+
 			
 			
 
