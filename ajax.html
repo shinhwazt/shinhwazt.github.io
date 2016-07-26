@@ -16,6 +16,8 @@
   <style>
   .textIndent{text-indent:2em}
   .line{height:1px;border-top:1px solid red;margin-bottom:10px}
+  .title{background-color:#7777A4;padding:10px;color:white}
+  .clearMB{margin-bottom:0!important}
   .mt{margin-top:50px}
   </style>
   <script>
@@ -45,7 +47,8 @@
 		<div class="row">
 			<div class="col-lg-12">
 			<h3>AJAX</h3>
-			<p id="jqajax">ajax在我们平时的开发中只有一个作用就是用来进行数据的交互</p>
+			<p class="col-lg-12 title" id="jqajax">JQ-ajax实现</p>
+			<p>ajax在我们平时的开发中只有一个作用就是用来进行数据的交互</p>
 			<p>JQ为我们封装了ajax使用的基本方式为：</p>
 			<pre>
 			$.ajax({
@@ -84,7 +87,8 @@
 			的数据(success:function(data){console.log("data是我们从服务器获取到的具体数据")})</p>
 			<p>JQ的$.ajax()方式的简单用法就是这些，复杂用法自行科普~</p>
 			<div class="line"></div>
-			<p id="jsajax">ajax进行数据交互的核心为XMLHttpRequest。在进行异步数据交互的时候需要用到它的
+			<p class="col-lg-12 title"  id="jsajax">JS-ajax实现</p>
+			<p>ajax进行数据交互的核心为XMLHttpRequest。在进行异步数据交互的时候需要用到它的
 			两个方法
 			open(),send()一个事件onreadystatechange以及三个属性responseText,readyState,status。</p>
 			<p>ajax的执行过程就像是我们的行为一样：首先我们想要干一件大事!(open())然后我们付诸行动
@@ -193,7 +197,7 @@
 			}
 		  </pre>
 		  <div class="line"></div>
-		  <p id="jsonp">跨域使用ajax--jsonp</p>
+		  <p id="jsonp" class="col-lg-12 title">跨域使用ajax--jsonp</p>
 		  <p>JQ使用跨域的方式很简单，但是只支持GET方式，使用时只需要把dataType改为dataType:"jsonp",
 		  该属性后再添加一个属性：jsonp:"callback"(该值是可以随意设置的在后台同名获取即可)
 		  此时后台返回的数据不再是原来的格式而是callback(原来的值)这种格式，等同于函数调用并且
@@ -229,6 +233,13 @@
 
 
 			</div>
+		</div>
+	</div>
+	<div class="navbar navbar-default clearMB">
+		<div class="container">
+			<h3>前端路上的小小鸟</h3>
+			<h4>如有错误请指正，虚心求教。</h4>
+			<h4>QQ:1370510025</h4>
 		</div>
 	</div>
  </body>
