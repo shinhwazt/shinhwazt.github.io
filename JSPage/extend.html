@@ -13,7 +13,7 @@
   <script src="../js/jquery.js"></script>
   <script src="../js/bootstrap.min.js"></script>
   <style>
-  .textIndent{text-indent:2em}
+  .textIndent{text-indent:2em;line-height:2em}
   .line{height:1px;border-top:1px solid red;margin-bottom:10px}
   .title{background-color:#7777A4;padding:10px;color:white}
   .clearMB{margin-bottom:0!important}
@@ -47,7 +47,7 @@
 		<div class="col-lg-12">
 		<h3 class="title" id="proto">原型链</h3>
 		
-		<p>JS的继承是基于原型链的</p>
+		<p class="textIndent">JS的继承是基于原型链的</p>
 		<pre>
 		var a = {a:1,b:2};//创建一个对象,对象创建时会自动创建一个__proto__属性
 		此时对象a为：
@@ -64,8 +64,9 @@
 		查找该属性，如果还不存在则继续向上查找，一直找到原型链的末端(Object.prototype),如果仍然不存在
 		则会返回undefined
 		</pre>
-		<p style="color:red">prototype属性只存在Object和函数对象上</p>
-		<p>Object.create()函数可以创建一个新对象，新对象的原型链指向函数的第一个参数</p>
+		<p style="color:red" class="textIndent">prototype属性只存在Object和函数对象上</p>
+		<p class="textIndent">Object.create()函数可以创建一个新对象，新对象的原型链指向函数的第一个参数
+		</p>
 		<pre>
 		var a = {a:1,b:2};
 		var b = Object.create(a);
@@ -81,10 +82,10 @@
 		</pre>
 		<div class="line"></div>
 		<h3 class="title" id="extend">函数继承</h3>
-		<p>JS函数的继承是通过原型链来实现的</p>
-		<p>继承是面向对象的一个特性，继承的过程就是一个从普遍到特殊的过渡，我们把目标的公共的部分
-		抽取出来作为父类，每一个子类从父类中派生，这样子类既有公共的部分，又有自己独有的部分</p>
-		<p>一个简单的继承如下：</p>
+		<p class="textIndent">JS函数的继承是通过原型链来实现的</p>
+		<p class="textIndent">继承是面向对象的一个特性，继承的过程就是一个从普遍到特殊的过渡，我们把目标的
+		公共的部分抽取出来作为父类，每一个子类从父类中派生，这样子类既有公共的部分，又有自己独有的部分</p>
+		<p class="textIndent">一个简单的继承如下：</p>
 		<pre>
 		function People(name,age){
 			this.name = name;
@@ -107,15 +108,17 @@
 		var people = new People("人类",70)
 		people.say();
 		</pre>
-		<p>在我们平时的开发中，通常把属性定义在函数中，把函数定义在构造函数的原型中</p>
-		<p>所以在在使用继承的时候我们需要考虑两个方面一个是属性的技能，一个是方法的继承。通常我们使用
-		函数.call(this)来实现属性的继承，call方法的作用是执行前面的函数，同时将函数里面的this替换为
-		第一个参数，后面参数就是执行函数的里面的参数</p>
-		<p>属性的继承有多种方式我们常用的方式有两种，一种是通过Object.create()方式形成一条原型链，
+		<p class="textIndent">在我们平时的开发中，通常把属性定义在函数中，把函数定义在构造函数的原型中</p>
+		<p class="textIndent">所以在在使用继承的时候我们需要考虑两个方面一个是属性的技能，一个是方法的继承
+		。通常我们使用函数.call(this)来实现属性的继承，call方法的作用是执行前面的函数，
+		同时将函数里面的this替换为第一个参数，后面参数就是执行函数的里面的参数</p>
+		<p class="textIndent">属性的继承有多种方式我们常用的方式有两种，一种是通过Object.create()方式形成
+		一条原型链，
 		使子类可以通过该原型链访问到父类的原型上面的方法，同时也可以实现继承里面的方法覆盖，子列修改
 		继承的方法不会影响父类的构造方法，因为子类在自身上面寻找到了该方法就不会到父类的原型上去查找。
 		这种方式下我们需要改变子类的constructor的指向自己的构造函数。</p>
-		<p>方法继承的常用第二种方式为对象的深拷贝，因为函数.prototype是一个对象，而方法就是该对象上面
+		<p class="textIndent">方法继承的常用第二种方式为对象的深拷贝，因为函数.prototype是一个对象，而方法
+		就是该对象上面
 		的属性，所以我们可以通过继承来讲父类原型上面的方法拷贝到子类的原型上，常用继承方法都可以实现
 		该功能</p>
 		<pre>
@@ -135,7 +138,7 @@
 <div class="navbar navbar-default clearMB">
 		<div class="container">
 			
-			<h4>QQ:1370510025</h4>
+		
 		</div>
 	</div>
  </body>

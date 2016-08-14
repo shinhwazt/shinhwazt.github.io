@@ -14,7 +14,7 @@
   <script src="../js/jquery.js"></script>
   <script src="../js/bootstrap.min.js"></script>
   <style>
-  .textIndent{text-indent:2em}
+  .textIndent{text-indent:2em;line-height:2em}
   .line{height:1px;border-top:1px solid red;margin-bottom:10px}
   .title{background-color:#7777A4;padding:10px;color:white}
   .clearMB{margin-bottom:0!important}
@@ -47,17 +47,18 @@
 	<div class="row">
 		<div class="col-lg-12">
 		<h3 class="title" id="create">对象的创建的三种方式</h3>
-		<p>1.对象字面量创建</p>
+		<p class="textIndent">1.对象字面量创建</p>
 		<pre>
 		var a = {};
 		//这种方式创建的对象的原型为Object.prototype
 		</pre>
-		<p>2.new操作符</p>
+		<p class="textIndent">2.new操作符</p>
 		<pre>
 		var a = new Object();
 		//这种方式创建的对象的原型为构造函数的原型
 		</pre>
-		<p>new操作符会创建一个对象实例,在这个过程中主要包括三个部分，1属性的初始化，2原型的继承，3改变
+		<p class="textIndent">new操作符会创建一个对象实例,在这个过程中主要包括三个部分，1属性的初始化，
+		2原型的继承，3改变
 		this的指向。new操作符后面的函数称之为构造函数，在new的过程中，会把构造函数的属性添加到要被创建
 		得对象的身上，同时新对象的原型会指向构造函数的原型，this也同样会指向新创建出来的对象。新创建的
 		对象即构造函数的一个实例，拥有构造函数的属性和方法</p>
@@ -74,7 +75,7 @@
 		//上面是我们创建的一个对象，new过程的三个部分完成之后会创建出一个me对象
 		//此时的me对象等价于{name:"zt",age:22,skill:function(){}},真正的skill函数是通过原型才能够访问到的！
 		</pre>
-		3.Object.create();
+		<p class="textIndent">3.Object.create()</p>
 		<pre>
 		var a = Object.create(Object.prorotype);//参数是一个对象
 		//该方法的解释为创建一个对象，并且该对象的原型指向第一个参数，新对象继承了参数对象
@@ -92,7 +93,8 @@
 		//我们也可以用下面的方式声明
 		var me = {name:"zt",age:22};
 		</pre>
-		<p>在我们平时的开发中，在进行前后数据交互的时候，如果是AJAX简单的数据交互我们可以使用
+		<p class="textIndent">在我们平时的开发中，在进行前后数据交互的时候，如果是AJAX简单的数据交互我们可
+		以使用
 		JQ提供的$("form").serialize()来发送我们数据，如果是复杂的数据格式，我们就需要自己组装
 		需要发送的数据，如果只是单一的情况我们使用上面的代码中的下面的方式组装对象即可，
 		如果存在多种情况我们使用上面的对象声明方式更加合理(可读性较高)。</p>
@@ -152,10 +154,10 @@
 		//delete window.a -> false
 		//delete window.b -> true
 		</pre>
-		<p>属性特性</p>
-		<p>属性特性包括，值(value)、可写(writable)、可枚举(enumerable)->决定属性能不能被循环到、
-		可配置(configable)</p>
-		<p>常用API如下：</p>
+		<p class="textIndent">属性特性</p>
+		<p class="textIndent">属性特性包括，值(value)、可写(writable)、可枚举(enumerable)->决定属性能不能
+		被循环到、可配置(configable)</p>
+		<p class="textIndent">常用API如下：</p>
 		<pre>
 		Object.getOwnPropertyDescriptor();//得到自有属性描述 不能得到继承的属性
 		//该方法接受两个参数第一个参数为对象，第二个参数为对象的一个属性(属性要加上"")
@@ -184,7 +186,7 @@
 		var str = JSON.stringify(a);//"{"name":"zt","age":22}"
 		var _a = JSON.parse(str);//{name: "zt", age: 22}
 		</pre>
-		JSON.stringify()和JSON.parse()结合使用可以完成对对象的深拷贝
+		<p class="textIndent"> JSON.stringify()和JSON.parse()结合使用可以完成对对象的深拷贝</p>
 		<pre>
 		function extend(obj){
 			return JSON.parse(JSON.stringify(obj))
@@ -198,8 +200,7 @@
  </div>
  <div class="navbar navbar-default clearMB">
 		<div class="container">
-			
-			<h4>QQ:1370510025</h4>
+		
 		</div>
 	</div>
  </body>
