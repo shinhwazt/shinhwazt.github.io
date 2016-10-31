@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script src="../js/jquery.js"></script>
+  <style>
+  *{margin:0;padding:0}
+  .mask{height:1px;width:1px;position:absolute;background-color:gray;opacity:0.2}
+  #left,#right{margin-left:100px;float:left;margin-top:200px}
+  #left{margin-left:300px}
+  </style>
+  <script>
+  $(function(){
+	  //禁止左键选中
+	  $(document).bind("selectstart",function(){
+		  return false;
+	  })
+	  $(document).mousedown(function(e){
+		  var downX = e.pageX;
+		  var downY = e.pageY;
+		  $(this).bind("mousemove",function(e){
+			  createMask();
+			  var moveX = e.pageX;
+			  var moveY = e.pageY;
+			  var mask = $("#mask");
+			  mask.css({"width":moveX-downX+"px","height":moveY-downY+"px"})
+			  if(moveX<downX&&moveY>downY){
+				  mask.css({"left":moveX+"px","top":downY+"px","width":downX-moveX+"px","height":moveY-downY+"px"})
+			  }else if(moveX<downX&&moveY<downY){
+				  mask.css({"left":moveX+"px","top":moveY+"px","width":downX-moveX+"px","height":downY-moveY+"px"})
+			  }else if(moveX>downX&&moveY<downY){
+				  mask.css({"left":downX+"px","top":moveY+"px","width":moveX-downX+"px","height":downY-moveY+"px"})
+
+			  }else{
+				  mask.css({"left":downX+"px","top":downY+"px","width":moveX-downX+"px","height":moveY-downY+"px"})
+			  }
+		  })
+		  $(this).bind("mouseup",function(e){
+			var upX = e.pageX;
+			var upY = e.pageY;
+			var doms = $("input");
+			downX>upX&&changeX();
+			downY>upY&&changeY();
+			for(var i=0,il=doms.length;i<il;i++){
+				var c = $(doms[i]);
+				var p = c.position();
+				var top = p.top;
+				var left = p.left;
+				if(top>=downY&&top<=upY&&left>=downX&&left<=upX){
+					c.prop("checked",!c.prop("checked"));
+				}
+			}
+			$(this).unbind("mousemove");
+			$(this).unbind("mouseup");
+			$("#mask").remove();
+			function changeY(){
+			  var c;
+			  c = downY;
+			  downY = upY;
+			  upY = c;
+		    }
+			function changeX(){
+			  var c;
+			  c = downX;
+			  downX = upX;
+			  upX = c;
+		    }
+		  }.bind(this))
+	  })
+	  function createMask(){
+		  var div = $("<div id='mask' class='mask'></div>");
+		  $("body").append(div);
+	  }
+  })
+  
+  </script>
+ </head>
+ <body>
+ <div id="left">
+  <input type="checkbox">测试<br />
+  <input type="checkbox">测试<br />
+  <input type="checkbox">测试<br />
+  <input type="checkbox">测试<br />
+  <input type="checkbox">测试<br />
+  <input type="checkbox">测试<br />
+  <input type="checkbox">测试<br />
+  <input type="checkbox">测试<br />
+  <input type="checkbox">测试<br />
+  <input type="checkbox">测试<br />
+  <input type="checkbox">测试<br />
+  <input type="checkbox">测试<br />
+  <input type="checkbox">测试<br />
+  <input type="checkbox">测试<br />
+  <input type="checkbox">测试<br />
+ </div>
+ <div id="right">
+ <input type="checkbox">测试<br />
+  <input type="checkbox">测试<br />
+  <input type="checkbox">测试<br />
+  <input type="checkbox">测试<br />
+  <input type="checkbox">测试<br />
+  <input type="checkbox">测试<br />
+  <input type="checkbox">测试<br />
+  <input type="checkbox">测试<br />
+  <input type="checkbox">测试<br />
+  <input type="checkbox">测试<br />
+  <input type="checkbox">测试<br />
+  <input type="checkbox">测试<br />
+  <input type="checkbox">测试<br />
+  <input type="checkbox">测试<br />
+  <input type="checkbox">测试<br />
+ </div>
+  
+ </body>
+</html>
