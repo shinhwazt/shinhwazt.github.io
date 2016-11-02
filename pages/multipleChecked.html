@@ -29,14 +29,13 @@
 			  var moveY = e.pageY;
 			  var mask = $("#mask");
 			  mask.css({"width":moveX-downX+"px","height":moveY-downY+"px"})
-			  if(moveX<downX&&moveY>downY){
+			  if(moveX<downX&&moveY>downY){//在B内
 				  mask.css({"left":moveX+"px","top":downY+"px","width":downX-moveX+"px","height":moveY-downY+"px"})
-			  }else if(moveX<downX&&moveY<downY){
+			  }else if(moveX<downX&&moveY<downY){//在C内
 				  mask.css({"left":moveX+"px","top":moveY+"px","width":downX-moveX+"px","height":downY-moveY+"px"})
-			  }else if(moveX>downX&&moveY<downY){
+			  }else if(moveX>downX&&moveY<downY){//在D内
 				  mask.css({"left":downX+"px","top":moveY+"px","width":moveX-downX+"px","height":downY-moveY+"px"})
-
-			  }else{
+			  }else{//在A内
 				  mask.css({"left":downX+"px","top":downY+"px","width":moveX-downX+"px","height":moveY-downY+"px"})
 			  }
 		  })

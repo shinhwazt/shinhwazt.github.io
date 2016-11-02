@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style>
+  *{margin:0;padding:0}
+  #demo{height:200px;width:200px;background-color:red;position:absolute;top:0;left:0;cursor:pointer}
+  </style>
+  <script src="jquery-1.12.1.min.js"></script>
+  <script>
+$(function(){
+	$("#demo").bind("mousedown",function(e){
+		var _this = this;
+		var left = $(this).offset().left;
+		var top = $(this).offset().top;
+		var downX = e.pageX;
+		var downY = e.pageY;
+		var disX = downX-left;
+		var disY = downY-top;
+		$(document).bind("mousemove",function(e){
+			defer(_this,200,handler)(e,disX,disY);
+			//handler.call(_this,e,disX,disY)
+			
+		})
+		$(this).bind("mouseup",function(e){
+			handler.timer&&clearInterval(handler.timer);
+			$(document).unbind("mousemove");
+			$(this).unbind("mouseup");
+		})
+	})
+})
+function handler(e,disX,disY){
+	var currentX = e.pageX;
+	var currentY = e.pageY;
+	$(this).css({"top":currentY-disY+"px","left":currentX-disX+"px"});
+	console.log(1)
+}
+/**
+**fn表示事件处理函数
+**_this表示事件处理函数中的this指向
+**delay表示延迟时间
+**interval表示函数执行的间隔
+*/
+function defer(_this,delay,fn,interval){
+	return function(){
+		fn.timer&&clearTimeout(fn.timer);
+		var arg = arguments;
+		var _interval = interval || 50;
+		fn.start?"":fn.start=+new Date();
+		var current = +new Date();
+		if(current-fn.start>=_interval){
+			fn.start = current;
+			fn.apply(_this,arg);
+		}else{
+			fn.timer = setTimeout(function(){
+				fn.apply(_this,arg);
+			},delay)
+		}	
+	}
+}
+  </script>
+ </head>
+ <body>
+  <div id="demo"></div>
+ </body>
+</html>

@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style>
+  *{margin:0;padding:0}
+  #demo{height:200px;width:200px;background-color:red;position:absolute;top:0;left:0;cursor:pointer}
+  </style>
+  <script src="jquery-1.12.1.min.js"></script>
+  <script>
+$(function(){
+	$("#demo").bind("mousedown",function(e){
+		var _this = this;
+		var left = $(this).offset().left;
+		var top = $(this).offset().top;
+		var downX = e.pageX;
+		var downY = e.pageY;
+		var disX = downX-left;
+		var disY = downY-top;
+		$(document).bind("mousemove",function(e){
+			defer(_this,200,handler)(e,disX,disY);
+		})
+		$(this).bind("mouseup",function(e){
+			$(document).unbind("mousemove");
+			$(this).unbind("mouseup");
+		})
+	})
+})
+function handler(e,disX,disY){
+	var currentX = e.pageX;
+	var currentY = e.pageY;
+	$(this).css({"top":currentY-disY+"px","left":currentX-disX+"px"})
+	 
+}
+function defer(_this,delay,fn){
+	return function(){
+		fn.timer&&clearTimeout(fn.timer);
+		var arg = arguments;
+		fn.timer = setTimeout(function(){
+			fn.apply(_this,arg);
+		},delay)
+	}
+}
+  </script>
+ </head>
+ <body>
+  <div id="demo"></div>
+ </body>
+</html>
