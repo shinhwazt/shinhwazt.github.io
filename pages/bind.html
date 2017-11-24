@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+ </head>
+ <body>
+  
+
+<script src="http://www.jianshu.com/users/recommended?seen_ids=&count=5&only_unfollowed=true"></script>
+  <script>
+  window.type = "window";
+  function init(name,age){
+	  console.log("type is:"+this.type);
+	  console.log("name is:"+name);
+	  console.log("age is:"+age);
+  }
+  var obj = {type:"obj"}
+  init.apply(obj,["zt",25]);
+  init.call(obj,"zt",25);
+  
+
+  
+  var fn = init.bind(obj,"bind zt");
+  
+  fn(35);
+  </script>
+ </body>
+</html>
